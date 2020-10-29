@@ -1,6 +1,20 @@
 // 入口函数
 $(function () {
     getUserInfo()
+
+    // 点击退出,跳转到登录页面
+    $('#btnLogout').on('click', function () {
+        var layer = layui.layer
+        // 弹出询问框
+        layer.confirm('是否确定退出?', { icon: 3, title: '提示' }, function (index) {
+            // 删除token
+            localStorage.removeItem('token')
+            // 跳转到登录页面
+            location.href = '/login.html'
+            // 关闭询问框
+            layer.close(index);
+        });
+    })
 })
 
 
